@@ -1,0 +1,9 @@
+---
+# tasks file for openjdk
+
+- name: Create /usr/share/man/man[1-8] subdirectories if necessary
+  file:
+    path: /usr/share/man/man{{ item }}
+    mode: 0755
+    state: directory
+  loop: "{{ range(1, 9) | list }}"

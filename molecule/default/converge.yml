@@ -2,4 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: ansible-role-openjdk-jdk-headless
+    - role: ansible-role-openjdk

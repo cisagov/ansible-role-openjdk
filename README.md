@@ -1,16 +1,10 @@
-# ansible-role-openjdk-jdk-headless #
+# ansible-role-openjdk #
 
-[![GitHub Build Status](https://github.com/cisagov/ansible-role-openjdk-jdk-headless/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-openjdk-jdk-headless/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-openjdk-jdk-headless.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-openjdk-jdk-headless/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-openjdk-jdk-headless.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-openjdk-jdk-headless/context:python)
+[![GitHub Build Status](https://github.com/cisagov/ansible-role-openjdk/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-openjdk/actions)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-openjdk.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-openjdk/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-openjdk.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-openjdk/context:python)
 
-This is a skeleton project that can be used to quickly get a new
-[cisagov](https://github.com/cisagov) Ansible role GitHub project
-started.  This skeleton project contains
-[licensing information](LICENSE), as well as
-[pre-commit hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for an Ansible role.
+Install the OpenJDK Java JDK.
 
 ## Requirements ##
 
@@ -33,7 +27,7 @@ Here's how to use it in a playbook:
   become: yes
   become_method: sudo
   roles:
-    - skeleton
+    - openjdk
 ```
 
 ## Contributing ##
@@ -56,4 +50,4 @@ with this waiver of copyright interest.
 
 ## Author Information ##
 
-First Last - <first.last@trio.dhs.gov>
+Shane Frasier - <jeremy.frasier@trio.dhs.gov>

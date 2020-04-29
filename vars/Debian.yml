@@ -1,0 +1,6 @@
+---
+# vars file for Debian
+
+# The packages to install for OpenJDK
+package_names:
+  - openjdk-11-jdk

@@ -1,2 +1,27 @@
 ---
-# tasks file for skeleton
+# tasks file for openjdk
+
+- name: Load var file with package names based on the OS type
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        # Add regex_replace() filters to remove spaces and
+        # slashes. This allows the OS family/distribution for Kali,
+        # "Kali GNU/Linux", to be easily mapped to a vars file.
+        - "{{ ansible_distribution | regex_replace('[ /]', '_') }}_{{ ansible_distribution_version }}.yml"
+        - "{{ ansible_distribution | regex_replace('[ /]', '_') }}.yml"
+        - "{{ ansible_os_family | regex_replace('[ /]', '_') }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
+
+# The debian:<release>-slim Docker images are missing the
+# /usr/share/man/man[1-8] directories, which causes some packages
+# (including openjdk-jdk) to fail to install.
+- name: Add missing man directories if necessary
+  include: add_missing_man_dirs.yml
+  when: ansible_distribution == "Debian"
+
+- name: Install OpenJDK
+  package:
+    name: "{{ package_names }}"
