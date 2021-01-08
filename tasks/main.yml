@@ -16,7 +16,8 @@
 # /usr/share/man/man[1-8] directories, which causes some packages
 # (including openjdk-jdk) to fail to install.
 - name: Add missing man directories if necessary
-  include: add_missing_man_dirs.yml
+  include_tasks:
+    file: add_missing_man_dirs.yml
   when: ansible_distribution == "Debian"
 
 - name: Install OpenJDK
