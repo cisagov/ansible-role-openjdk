@@ -50,15 +50,6 @@ def test_debian_9_packages(host, pkg):
         assert host.package(pkg).is_installed
 
 
-@pytest.mark.parametrize("pkg", ["openjdk-8-jdk"])
-def test_ubuntu_xenial_packages(host, pkg):
-    """Test that the appropriate packages were installed."""
-    distribution = host.system_info.distribution
-    codename = host.system_info.codename
-    if distribution == "ubuntu" and codename == "xenial":
-        assert host.package(pkg).is_installed
-
-
 @pytest.mark.parametrize("pkg", ["java-11-openjdk-devel"])
 def test_redhat_packages(host, pkg):
     """Test that the appropriate packages were installed."""

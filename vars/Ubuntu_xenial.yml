@@ -1,7 +1,0 @@
----
-# vars file for Ubuntu Xenial
-
-# The packages to install for OpenJDK.  OpenJDK 9 does not install
-# cleanly on Xenial, so we have to revert to using OpenJDK 8.
-package_names:
-  - openjdk-8-jdk
