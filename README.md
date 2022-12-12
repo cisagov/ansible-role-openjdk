@@ -1,8 +1,7 @@
 # ansible-role-openjdk #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-openjdk/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-openjdk/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-openjdk.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-openjdk/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-openjdk.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-openjdk/context:python)
+[![CodeQL](https://github.com/cisagov/ansible-role-openjdk/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-openjdk/actions/workflows/codeql-analysis.yml)
 
 Install the OpenJDK Java JDK.
 
@@ -33,8 +32,10 @@ Here's how to use it in a playbook:
 - hosts: all
   become: yes
   become_method: sudo
-  roles:
-    - openjdk
+  tasks:
+    - name: Install OpenJDK
+      ansible.builtin.include_role:
+        name: openjdk
 ```
 
 ## Contributing ##
