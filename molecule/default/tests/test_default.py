@@ -32,35 +32,20 @@ def test_man_dirs(host, d):
         assert host.file(d).exists
 
 
-@pytest.mark.parametrize("pkg", ["openjdk-11-jdk"])
-def test_debian_packages(host, pkg):
+def test_packages(host):
     """Test that the appropriate packages were installed."""
     distribution = host.system_info.distribution
     codename = host.system_info.codename
-    if distribution == "debian" and codename != "stretch":
-        assert host.package(pkg).is_installed
-
-
-@pytest.mark.parametrize("pkg", ["openjdk-8-jdk"])
-def test_debian_9_packages(host, pkg):
-    """Test that the appropriate packages were installed."""
-    distribution = host.system_info.distribution
-    codename = host.system_info.codename
-    if distribution == "debian" and codename == "stretch":
-        assert host.package(pkg).is_installed
-
-
-@pytest.mark.parametrize("pkg", ["java-11-openjdk-devel"])
-def test_redhat_packages(host, pkg):
-    """Test that the appropriate packages were installed."""
-    distribution = host.system_info.distribution
-    if distribution == "fedora":
-        assert host.package(pkg).is_installed
-
-
-@pytest.mark.parametrize("pkg", ["java-1.8.0-openjdk-devel"])
-def test_amazon_packages(host, pkg):
-    """Test that the appropriate packages were installed."""
-    distribution = host.system_info.distribution
-    if distribution == "amzn":
-        assert host.package(pkg).is_installed
+    if distribution in ["debian", "kali", "ubuntu"]:
+        if codename in ["stretch"]:
+            assert host.package("openjdk-8-jdk").is_installed
+        elif codename in ["bookworm"]:
+            assert host.package("openjdk-17-jdk").is_installed
+        else:
+            assert host.package("openjdk-11-jdk").is_installed
+    elif distribution in ["fedora"]:
+        assert host.package("java-11-openjdk-devel").is_installed
+    elif distribution in ["amzn"]:
+        assert host.package("java-1.8.0-openjdk-devel").is_installed
+    else:
+        assert False, f"Unknown distribution: {distribution}"

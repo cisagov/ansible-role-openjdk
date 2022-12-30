@@ -1,6 +1,4 @@
 ---
-# vars file for Amazon Linux
-
 # The packages to install for OpenJDK
 package_names:
   - java-1.8.0-openjdk-devel

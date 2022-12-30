@@ -1,4 +1,4 @@
 ---
 # The packages to install for OpenJDK
 package_names:
-  - java-11-openjdk-devel
+  - openjdk-17-jdk
