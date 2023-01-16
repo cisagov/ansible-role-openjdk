@@ -1,8 +1,6 @@
 ---
-# tasks file for openjdk
-
 - name: Load var file with package names based on the OS type
-  include_vars: "{{ lookup('first_found', params) }}"
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
     params:
       files:
@@ -16,10 +14,10 @@
 # /usr/share/man/man[1-8] directories, which causes some packages
 # (including openjdk-jdk) to fail to install.
 - name: Add missing man directories if necessary
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: add_missing_man_dirs.yml
   when: ansible_distribution == "Debian"
 
 - name: Install OpenJDK
-  package:
+  ansible.builtin.package:
     name: "{{ package_names }}"
