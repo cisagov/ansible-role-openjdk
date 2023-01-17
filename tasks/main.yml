@@ -13,7 +13,7 @@
 # The debian:<release>-slim Docker images are missing the
 # /usr/share/man/man[1-8] directories, which causes some packages
 # (including openjdk-jdk) to fail to install.
-- name: Add missing man directories if necessary
+- name: Add missing man directories for Debian
   ansible.builtin.include_tasks:
     file: add_missing_man_dirs.yml
   when: ansible_distribution == "Debian"
@@ -21,3 +21,13 @@
 - name: Install OpenJDK
   ansible.builtin.package:
     name: "{{ package_names }}"
+
+# By default OpenJDK 17 is being used on Kali Linux.  Neo4j <5
+# requires OpenJDK 11.
+#
+# TODO: This block can be removed once we upgrade to Neo4j version 5,
+# as discussed in cisagov/kali-packer#136.
+- name: Configure alternatives for Kali
+  ansible.builtin.include_tasks:
+    file: configure_alternatives.yml
+  when: ansible_distribution == "Kali"

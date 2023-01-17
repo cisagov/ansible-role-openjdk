@@ -2,6 +2,7 @@
 
 # Standard Python Libraries
 import os
+import pathlib
 
 # Third-Party Libraries
 import pytest
@@ -30,6 +31,160 @@ def test_man_dirs(host, d):
     distribution = host.system_info.distribution
     if distribution == "debian":
         assert host.file(d).exists
+
+
+@pytest.mark.parametrize(
+    "d, tool",
+    [
+        (
+            "bin",
+            "jaotc",
+        ),
+        (
+            "bin",
+            "jar",
+        ),
+        (
+            "bin",
+            "jarsigner",
+        ),
+        (
+            "bin",
+            "java",
+        ),
+        (
+            "bin",
+            "javac",
+        ),
+        (
+            "bin",
+            "javadoc",
+        ),
+        (
+            "bin",
+            "javap",
+        ),
+        (
+            "bin",
+            "jcmd",
+        ),
+        (
+            "bin",
+            "jconsole",
+        ),
+        (
+            "bin",
+            "jdb",
+        ),
+        (
+            "bin",
+            "jdeprscan",
+        ),
+        (
+            "bin",
+            "jdeps",
+        ),
+        (
+            "lib",
+            "jexec",
+        ),
+        (
+            "bin",
+            "jfr",
+        ),
+        (
+            "bin",
+            "jhsdb",
+        ),
+        (
+            "bin",
+            "jimage",
+        ),
+        (
+            "bin",
+            "jinfo",
+        ),
+        (
+            "bin",
+            "jjs",
+        ),
+        (
+            "bin",
+            "jlink",
+        ),
+        (
+            "bin",
+            "jmap",
+        ),
+        (
+            "bin",
+            "jmod",
+        ),
+        (
+            "bin",
+            "jps",
+        ),
+        (
+            "bin",
+            "jrunscript",
+        ),
+        (
+            "bin",
+            "jshell",
+        ),
+        (
+            "bin",
+            "jstack",
+        ),
+        (
+            "bin",
+            "jstat",
+        ),
+        (
+            "bin",
+            "jstatd",
+        ),
+        (
+            "bin",
+            "keytool",
+        ),
+        (
+            "bin",
+            "pack200",
+        ),
+        (
+            "bin",
+            "rmic",
+        ),
+        (
+            "bin",
+            "rmid",
+        ),
+        (
+            "bin",
+            "rmiregistry",
+        ),
+        (
+            "bin",
+            "serialver",
+        ),
+        (
+            "bin",
+            "unpack200",
+        ),
+    ],
+)
+def test_alternatives(host, d, tool):
+    """Test that the alternatives are configured as expected for Kali instances."""
+    distribution = host.system_info.distribution
+    if distribution == "kali":
+        alternative_path = str(pathlib.PurePath("/etc/alternatives", tool))
+        f = host.file(alternative_path)
+        assert f.exists
+        assert f.is_symlink
+        assert f.linked_to == str(
+            pathlib.PurePath("/usr/lib/jvm/java-11-openjdk-amd64", d, tool)
+        )
 
 
 def test_packages(host):
