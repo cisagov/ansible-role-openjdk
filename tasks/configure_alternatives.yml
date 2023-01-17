@@ -1,0 +1,74 @@
+---
+- name: Configure all alternatives for OpenJDK 11
+  community.general.alternatives:
+    name: "{{ item.tool }}"
+    path: /usr/lib/jvm/java-11-openjdk-amd64/{{ item.dir }}/{{ item.tool }}
+  loop:
+    - dir: bin
+      tool: jaotc
+    - dir: bin
+      tool: jar
+    - dir: bin
+      tool: jarsigner
+    - dir: bin
+      tool: java
+    - dir: bin
+      tool: javac
+    - dir: bin
+      tool: javadoc
+    - dir: bin
+      tool: javap
+    - dir: bin
+      tool: jcmd
+    - dir: bin
+      tool: jconsole
+    - dir: bin
+      tool: jdb
+    - dir: bin
+      tool: jdeprscan
+    - dir: bin
+      tool: jdeps
+    - dir: lib
+      tool: jexec
+    - dir: bin
+      tool: jfr
+    - dir: bin
+      tool: jhsdb
+    - dir: bin
+      tool: jimage
+    - dir: bin
+      tool: jinfo
+    - dir: bin
+      tool: jjs
+    - dir: bin
+      tool: jlink
+    - dir: bin
+      tool: jmap
+    - dir: bin
+      tool: jmod
+    - dir: bin
+      tool: jps
+    - dir: bin
+      tool: jrunscript
+    - dir: bin
+      tool: jshell
+    - dir: bin
+      tool: jstack
+    - dir: bin
+      tool: jstat
+    - dir: bin
+      tool: jstatd
+    - dir: bin
+      tool: keytool
+    - dir: bin
+      tool: pack200
+    - dir: bin
+      tool: rmic
+    - dir: bin
+      tool: rmid
+    - dir: bin
+      tool: rmiregistry
+    - dir: bin
+      tool: serialver
+    - dir: bin
+      tool: unpack200
