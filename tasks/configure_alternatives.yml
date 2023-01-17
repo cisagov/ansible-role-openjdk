@@ -1,4 +1,9 @@
 ---
+# This list of alternatives is generated via the following instructions:
+# 1. Install OpenJDK 11
+# 2. Run update-alternatives --get-selections
+# 3. Examine the output of the previous command and note which
+# selections point to files installed as part of OpenJDK.
 - name: Configure all alternatives for OpenJDK 11
   community.general.alternatives:
     name: "{{ item.tool }}"
