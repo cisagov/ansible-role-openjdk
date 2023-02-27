@@ -1,8 +1,9 @@
 ---
+dependencies: []
 galaxy_info:
   author: Shane Frasier
-  description: Install OpenJDK
   company: CISA Cyber Assessments
+  description: Install OpenJDK
   galaxy_tags:
     - openjdk
     - jdk
@@ -37,5 +38,3 @@ galaxy_info:
         - focal
         - jammy
   role_name: openjdk
-
-dependencies: []
