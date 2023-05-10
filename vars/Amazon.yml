@@ -1,4 +1,10 @@
 ---
-# The packages to install for OpenJDK
+# The packages to install for Corretto, Amazon's distribution of
+# OpenJDK.  This is the only Java distribution supported by Amazon
+# Linux 2023.
+#
+# See also:
+# - https://aws.amazon.com/corretto/
+# - amazonlinux/amazon-linux-2023#14
 package_names:
-  - java-1.8.0-openjdk-devel
+  - java-11-amazon-corretto-devel
