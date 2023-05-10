@@ -1,4 +1,0 @@
----
-# The packages to install for OpenJDK
-package_names:
-  - openjdk-8-jdk

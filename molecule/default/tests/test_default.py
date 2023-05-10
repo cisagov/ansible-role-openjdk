@@ -192,9 +192,7 @@ def test_packages(host):
     distribution = host.system_info.distribution
     codename = host.system_info.codename
     if distribution in ["debian", "kali", "ubuntu"]:
-        if codename in ["stretch"]:
-            assert host.package("openjdk-8-jdk").is_installed
-        elif codename in ["bookworm"]:
+        if codename in ["bookworm"]:
             assert host.package("openjdk-17-jdk").is_installed
         else:
             assert host.package("openjdk-11-jdk").is_installed
