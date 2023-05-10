@@ -199,6 +199,6 @@ def test_packages(host):
     elif distribution in ["fedora"]:
         assert host.package("java-11-openjdk-devel").is_installed
     elif distribution in ["amzn"]:
-        assert host.package("java-1.8.0-openjdk-devel").is_installed
+        assert host.package("java-11-amazon-corretto-devel").is_installed
     else:
         assert False, f"Unknown distribution: {distribution}"
