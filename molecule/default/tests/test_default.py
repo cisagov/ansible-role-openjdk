@@ -191,11 +191,13 @@ def test_packages(host):
     """Test that the appropriate packages were installed."""
     distribution = host.system_info.distribution
     codename = host.system_info.codename
-    if distribution in ["debian", "kali", "ubuntu"]:
-        if codename in ["bookworm"]:
-            assert host.package("openjdk-17-jdk").is_installed
-        else:
+    if distribution in ["debian"]:
+        if codename in ["buster"]:
             assert host.package("openjdk-11-jdk").is_installed
+        else:
+            assert host.package("openjdk-17-jdk").is_installed
+    elif distribution in ["kali", "ubuntu"]:
+        assert host.package("openjdk-11-jdk").is_installed
     elif distribution in ["fedora"]:
         assert host.package("java-11-openjdk-devel").is_installed
     elif distribution in ["amzn"]:

@@ -16,7 +16,19 @@
 - name: Add missing man directories for Debian
   ansible.builtin.include_tasks:
     file: add_missing_man_dirs.yml
-  when: ansible_distribution == "Debian"
+  when: ansible_os_family == "Debian"
+
+# This seems to be necessary for Debian Buster.  If I don't do this
+# then the installation of OpenJDK fails.  For (minimally) more
+# information see here:
+# https://stackoverflow.com/questions/76872534/problem-installing-ca-certificates-java-package-within-debian-bookworm-docker-im
+- name: Install jing
+  ansible.builtin.package:
+    name:
+      - jing
+  when:
+    - ansible_distribution == "Debian"
+    - ansible_distribution_release == "buster"
 
 - name: Install OpenJDK
   ansible.builtin.package:
