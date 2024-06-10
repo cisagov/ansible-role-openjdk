@@ -178,12 +178,20 @@ def test_alternatives(host, d, tool):
     """Test that the alternatives are configured as expected for Kali instances."""
     distribution = host.system_info.distribution
     if distribution == "kali":
+        arch = host.system_info.arch
+        if arch == "x86_64":
+            arch_alias = "amd64"
+        elif arch == "aarch64":
+            arch_alias = "arm64"
+        else:
+            assert False, f"Unknown architecture {arch}"
+
         alternative_path = str(pathlib.PurePath("/etc/alternatives", tool))
         f = host.file(alternative_path)
         assert f.exists
         assert f.is_symlink
         assert f.linked_to == str(
-            pathlib.PurePath("/usr/lib/jvm/java-11-openjdk-amd64", d, tool)
+            pathlib.PurePath(f"/usr/lib/jvm/java-11-openjdk-{arch_alias}", d, tool)
         )
 
 

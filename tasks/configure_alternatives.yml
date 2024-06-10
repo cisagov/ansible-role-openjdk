@@ -7,7 +7,7 @@
 - name: Configure all alternatives for OpenJDK 11
   community.general.alternatives:
     name: "{{ item.tool }}"
-    path: /usr/lib/jvm/java-11-openjdk-amd64/{{ item.dir }}/{{ item.tool }}
+    path: /usr/lib/jvm/java-11-openjdk-{{ 'amd64' if ansible_architecture == 'x86_64' else 'arm64' }}/{{ item.dir }}/{{ item.tool }}
   loop:
     - dir: bin
       tool: jaotc
