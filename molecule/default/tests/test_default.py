@@ -206,11 +206,13 @@ def test_packages(host):
             assert host.package("openjdk-17-jdk").is_installed
         else:
             assert host.package("openjdk-21-jdk").is_installed
-    elif distribution in ["kali", "ubuntu"]:
+    elif distribution in ["kali"]:
         assert host.package("openjdk-11-jdk").is_installed
+    elif distribution in ["ubuntu"]:
+        assert host.package("openjdk-17-jdk").is_installed
     elif distribution in ["fedora"]:
         assert host.package("java-11-openjdk-devel").is_installed
     elif distribution in ["amzn"]:
-        assert host.package("java-11-amazon-corretto-devel").is_installed
+        assert host.package("java-17-amazon-corretto-devel").is_installed
     else:
         assert False, f"Unknown distribution: {distribution}"
