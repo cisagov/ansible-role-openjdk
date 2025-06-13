@@ -202,8 +202,10 @@ def test_packages(host):
     if distribution in ["debian"]:
         if codename in ["buster"]:
             assert host.package("openjdk-11-jdk").is_installed
-        else:
+        elif codename in ["bullseye", "bookworm"]:
             assert host.package("openjdk-17-jdk").is_installed
+        else:
+            assert host.package("openjdk-21-jdk").is_installed
     elif distribution in ["kali", "ubuntu"]:
         assert host.package("openjdk-11-jdk").is_installed
     elif distribution in ["fedora"]:
