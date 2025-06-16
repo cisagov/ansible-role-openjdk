@@ -202,13 +202,17 @@ def test_packages(host):
     if distribution in ["debian"]:
         if codename in ["buster"]:
             assert host.package("openjdk-11-jdk").is_installed
-        else:
+        elif codename in ["bullseye", "bookworm"]:
             assert host.package("openjdk-17-jdk").is_installed
-    elif distribution in ["kali", "ubuntu"]:
+        else:
+            assert host.package("openjdk-21-jdk").is_installed
+    elif distribution in ["kali"]:
         assert host.package("openjdk-11-jdk").is_installed
+    elif distribution in ["ubuntu"]:
+        assert host.package("openjdk-17-jdk").is_installed
     elif distribution in ["fedora"]:
-        assert host.package("java-11-openjdk-devel").is_installed
+        assert host.package("java-21-openjdk-devel").is_installed
     elif distribution in ["amzn"]:
-        assert host.package("java-11-amazon-corretto-devel").is_installed
+        assert host.package("java-17-amazon-corretto-devel").is_installed
     else:
         assert False, f"Unknown distribution: {distribution}"

@@ -7,4 +7,4 @@
 # - https://aws.amazon.com/corretto/
 # - amazonlinux/amazon-linux-2023#14
 package_names:
-  - java-11-amazon-corretto-devel
+  - java-17-amazon-corretto-devel
