@@ -1,6 +1,7 @@
 # ansible-role-openjdk #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-openjdk/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-openjdk/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-openjdk)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-openjdk/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-openjdk/actions/workflows/codeql-analysis.yml)
 
 Install the OpenJDK Java JDK.
