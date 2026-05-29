@@ -50,4 +50,4 @@ def test_packages(host):
     elif distribution in ["amzn"]:
         assert host.package("java-17-amazon-corretto-devel").is_installed
     else:
-        assert False, f"Unknown distribution: {distribution}"
+        raise ValueError(f"Unknown distribution: {distribution}")
